@@ -1,0 +1,3 @@
+pair_name,fastq1,fastq2
+S1,test_R1.fq,test_R2.fq
+S2,test_R1.fq,test_R2.fq
