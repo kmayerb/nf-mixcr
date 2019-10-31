@@ -49,6 +49,9 @@ This is a process that can be encapsulated into a workflow.
 ## Basic Nextflow Script Talking to This Container
 
 Here is my attempt to write a nextflow pipeline that uses a containerized tool.
+I had to try a number of things, and finally only the nuclear option:
+`-with-docker 'milaboratory/mixcr:3-imgt'`
+got my workflow to recognize and use the container.
 
 #### execution
 ```bash
