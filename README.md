@@ -117,44 +117,44 @@ BEA_r_
 
 
 ```nextflow
-	params.manifest = "manifest.txt"  
-	params.output_folder = "./output" 
+params.manifest = "manifest.txt"  
+params.output_folder = "./output" 
 
 
-	fastq_ch = Channel.from(file(params.manifest).readLines())
-	                  .map {it -> file(it)}
+fastq_ch = Channel.from(file(params.manifest).readLines())
+                  .map {it -> file(it)}
 
-	process meta {
-	    /* 
-	     * publishDir params.output_folder
-	     */
+process meta {
+    /* 
+     * publishDir params.output_folder
+     */
 
-	    input:
-	    file input_fastq from fastq_ch
-	    
-	    output:
-	    file "${input_fastq}.meta.tsv" into result
+    input:
+    file input_fastq from fastq_ch
+    
+    output:
+    file "${input_fastq}.meta.tsv" into result
 
-	    """
-	    python /Users/kmayerbl/gitrepo/nf-example/meta.py ${input_fastq} > ${input_fastq}.meta.tsv
-	    """
-	}
+    """
+    python /Users/kmayerbl/gitrepo/nf-example/meta.py ${input_fastq} > ${input_fastq}.meta.tsv
+    """
+}
 
-	process remove_r {
-	    publishDir params.output_folder
+process remove_r {
+    publishDir params.output_folder
 
-	    input:
-	    file uppercase_fastq from result
-	    
-	    output:
-	    file "${uppercase_fastq}.remove_r.tsv" 
+    input:
+    file uppercase_fastq from result
+    
+    output:
+    file "${uppercase_fastq}.remove_r.tsv" 
 
-	    """
-	    python /Users/kmayerbl/gitrepo/nf-example/remove_r.py ${uppercase_fastq} > "${uppercase_fastq}.remove_r.tsv" 
-	    """    
+    """
+    python /Users/kmayerbl/gitrepo/nf-example/remove_r.py ${uppercase_fastq} > "${uppercase_fastq}.remove_r.tsv" 
+    """    
 
-	}
-	```
+}
+```
 
 
 
