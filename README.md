@@ -52,69 +52,6 @@ This is a process that can be encapsulated into a workflow.
 
 ### New to Nexflow: Something Really Basic Script
 
-Here is a really basic nextflow script. It takes a list of files.
-
-It Capatalizes and emphasizes the letter "R"
-
-
-```
-It opens a channel of filenames from manifest.txt, passing
-file names to (meta.py), which reads the file line by line,
-performing conversion to uppercase letters.
-
-```python
-import sys
-
-fh = open(sys.argv[1], "r")
-
-for line in fh:
-	sys.stdout.write(line.strip().upper() + "\n")
-
-fh.close()
-```
-
-The stdout result is passes through a channel to (remove_r.py), which
-does the fancy business with the letter "R" converting it to "_r_": 
-
-```python
-import sys
-
-fh = open(sys.argv[1], "r")
-
-for line in fh:
-	sys.stdout.write(line.strip().replace("R","_r_") + "\n")
-
-fh.close()
-
-```
-
-for test1.txt:
-
-```bash
-ardvark
-antelope
-```
-Becomes
-
-```bash
-A_r_DVA_r_K
-ANTELOPE
-```
-for test2.txt:
-
-```bash
-bat
-beaver
-bear
-```
-Becomes
-```bash
-BAT
-BEAVE_r_
-BEA_r_
-```
-
-
 
 ```nextflow
 params.manifest = "manifest.txt"  
@@ -156,6 +93,62 @@ process remove_r {
 }
 ```
 
+
+Here is a really basic nextflow script. It takes a list of files.
+It Capatalizes and emphasizes the letter "R". 
+It does this for many files, by openning a channel containing 
+filenames from manifest.txt, passing file names to (meta.py):
+
+```python
+import sys
+
+fh = open(sys.argv[1], "r")
+
+for line in fh:
+	sys.stdout.write(line.strip().upper() + "\n")
+
+fh.close()
+```
+
+From which, the stdout result is passes through a channel to (remove_r.py), which does the fancy business with the letter "R" converting it to "_r_": 
+
+```python
+import sys
+
+fh = open(sys.argv[1], "r")
+
+for line in fh:
+	sys.stdout.write(line.strip().replace("R","_r_") + "\n")
+
+fh.close()
+
+```
+
+So, test1.txt:
+
+```bash
+ardvark
+antelope
+```
+Becomes:
+
+```bash
+A_r_DVA_r_K
+ANTELOPE
+```
+And, test2.txt:
+
+```bash
+bat
+beaver
+bear
+```
+Becomes
+```bash
+BAT
+BEAVE_r_
+BEA_r_
+```
 
 
 
