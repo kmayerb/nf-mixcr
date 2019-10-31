@@ -2,15 +2,12 @@
 
 Documenting the Creation of a Nextflow Pipeline For MiXCR (TCR Features From Bulk fastq Files)
 
-## Process 1 
-
-### Background 
+## Background 
 
 MiXCR is : "MiXCR is a universal framework that processes big immunome data from raw sequences to quantitated clonotypes."
 
 * excellent documentation: https://mixcr.readthedocs.io/en/master/index.html
 * active official docker repo:  https://hub.docker.com/r/milaboratory/mixcr
-
 
 ### Get Test Files
 
