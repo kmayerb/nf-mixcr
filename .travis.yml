@@ -8,6 +8,7 @@ install:
 script:
   - echo "NOT READY TO ACTUALLY TEST ANYTHING EXCEPT DEPENDENCIES"
   - pwd
-  - ls
+  - ls -la
+  - more .bashrc
   - nextflow -h
 
