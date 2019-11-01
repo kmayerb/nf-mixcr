@@ -1,9 +1,13 @@
 language: python
 python:
   - "3.6"
-
+jdk: openjdk8
+services:
+- docker
 # command to install dependencies
 install:
+  - sudo apt-get -qq update
+  - sudo apt-get -qq -y install graphviz realpath
   - wget -qO- https://get.nextflow.io | bash
   - if [[ $TRAVIS_PYTHON_VERSION == '3.6' ]]; then travis_retry pip install -r requirements.txt; fi
 script:
