@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/kmayerb/nf-mixcr.svg?branch=master)](https://travis-ci.com/kmayerb/nf-mixcr)
+
 # nf-mixcr
 
 Documenting the Creation of a Nextflow Pipeline For MiXCR (TCR Features From Bulk fastq Files)
