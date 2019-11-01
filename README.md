@@ -13,7 +13,31 @@ MiXCR is : "MiXCR is a universal framework that processes big immunome data from
 
 Zenodo file archive (October 24, 2019) : https://zenodo.org/record/3518366#.XbobYS2ZNC0
 
-### Test With Docker
+### Test With 
+
+#### Dockerfile
+
+```Docker
+FROM openjdk:11
+
+ARG version="3.0.11"
+
+RUN mkdir /work
+
+RUN cd / \
+    && wget -q https://github.com/milaboratory/mixcr/releases/download/v${version}/mixcr-${version}.zip \
+    && unzip mixcr-${version}.zip \
+    && mv mixcr-${version} mixcr \
+    && rm mixcr-${version}.zip
+
+ENV PATH="/mixcr:${PATH}"
+
+WORKDIR /work
+
+ENTRYPOINT ["/bin/bash"]
+```
+Sam Minot advised that ENTRYPOINTS spell trouble for containers in nextflow. The official docker file may need to be modified to remove the ENTRYPOINT.
+
 
 #### Pull Docker Image
 ```
