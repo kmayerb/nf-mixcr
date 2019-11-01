@@ -13,5 +13,6 @@ script:
   - more ~/.bashrc
   - echo 'export PATH="/home/travis/build/kmayerb/nf-mixcr:$PATH"' >> ~/.bashrc
   - more ~/.bashrc
+  - source ~/.bashrc
   - nextflow -h
 
