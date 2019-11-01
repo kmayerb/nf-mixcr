@@ -15,4 +15,5 @@ script:
   - echo 'export PATH="/home/travis/build/kmayerb/nf-mixcr:$PATH"' >> ~/.bashrc
   - source ~/.bashrc
   - nextflow -h
+  - nextflow nf-mixcr.nf -with-docker 'milaboratory/mixcr:3-imgt'
 
