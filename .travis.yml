@@ -9,6 +9,7 @@ script:
   - echo "NOT READY TO ACTUALLY TEST ANYTHING EXCEPT DEPENDENCIES"
   - pwd
   - ls -la
-  - more .bashrc
+  - ls nextflow/
+  - more ~/.bashrc
   - nextflow -h
 
