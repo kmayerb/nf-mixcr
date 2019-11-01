@@ -1,18 +1,14 @@
 language: python
 python:
   - "3.6"
+
 # command to install dependencies
 install:
   - wget -qO- https://get.nextflow.io | bash
   - if [[ $TRAVIS_PYTHON_VERSION == '3.6' ]]; then travis_retry pip install -r requirements.txt; fi
 script:
   - echo "NOT READY TO ACTUALLY TEST ANYTHING EXCEPT DEPENDENCIES"
-  - pwd
-  - ls -la
-  - ls nextflow/
-  - more ~/.bashrc
   - echo 'export PATH="/home/travis/build/kmayerb/nf-mixcr:$PATH"' >> ~/.bashrc
-  - more ~/.bashrc
   - source ~/.bashrc
   - nextflow -h
 
