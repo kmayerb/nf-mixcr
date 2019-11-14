@@ -1,0 +1,3 @@
+sampleId,read1,read2
+S1,s3://fh-pi-gilbert-p/nextflow_inputs/S1_R1.fq,s3://fh-pi-gilbert-p/nextflow_inputs/S1_R2.fq
+S1,s3://fh-pi-gilbert-p/nextflow_inputs/S2_R1.fq,s3://fh-pi-gilbert-p/nextflow_inputs/S2_R2.fq
