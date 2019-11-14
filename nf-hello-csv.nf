@@ -1,16 +1,18 @@
-// --aws
+// including --aws flag will turn this to true 
 params.aws = false
 
-//
-params.index = ( params.aws
-                 ? [ "$baseDir/manifest-aws.txt" ]
-                 : [ "$baseDir/manifest.txt" ] )
+if(params.aws) { 
+   params.index = "$baseDir/manifest-aws.txt"
+} else { 
+   params.index = "$baseDir/manifest.txt"
+}                 
 
-//
-params.pubdir = ( params.aws
-                 ? [ "s3://fh-pi-gilbert-p/nextflow_results/hello"]
-                 : [ "output" ] )
 
+if(params.aws) { 
+   params.pubdir = "s3://fh-pi-gilbert-p/nextflow_results/hello"
+} else { 
+   params.pubdir = "output" 
+}
 
 
 Channel
