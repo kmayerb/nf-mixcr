@@ -191,51 +191,6 @@ TRBV9*00(791)	TRBJ2-3*00(233)	TGTGCCAGCAGCGTAAGCACAGATACGCAGTATTTT	CASSVSTDTQYF
 ...
 ```
 
-#### Specific Questions
-
-QUESTIONS FOR SAM AND THE NEXTFLOW GROUP
-
-Q1: How can I elegantly get filenames from a columns of a manifest.csv file
- 
-I tried the following, but was unsuccessful. Is there a good template for this?
-```
-params.index = manifest.txt
-
-Channel
-  .fromPath(params.index)
-  .splitCsv(header:true)
-  .map{ row-> tuple(row.pair_name, file(row.fastq1), file(row.fastq2)) }
-  .set { fastq_pair_ch }
-```
-
-manifest.txt
-```
-pair_name,fastq1,fastq2
-S1,test_R1.fq,test_R2.fq
-S2,test_R1.fq,test_R2.fq
-```
-Something was not quite right. We could work from there.
-
-
-Q2: container 'milaboratory/mixcr:3-imgt' was not sufficient to make 
-nextflow use this docker container
-
-I had to manually use the flag -with-docker 'milaboratory/mixcr:3-imgt'
-
-Could we look at my config file to see why the container command below is 
-not sufficient to trigger containerization
-
-My nextflow.config:
-process.executor = 'local'
-process.container = 'milaboratory/mixcr:3-imgt'
-docker {
- enabled = true
- temp = 'auto'
-}
-Q3: Can we have a config in this working folder rather than ${HOME}/nextflow.config 
-
-
-
 
 ### New to Nexflow: A Fun Basic Script
 
