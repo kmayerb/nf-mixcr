@@ -14,6 +14,8 @@ process hello {
 
     output:
     file 'hello.txt'
+
+    // were to send the output
     publishDir "s3://fh-pi-gilbert-p/nextflow_results/hello"
 
     """
